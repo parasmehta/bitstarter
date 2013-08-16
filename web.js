@@ -3,12 +3,12 @@ var fs = require('fs');
 var app = express();
 app.use(express.logger());
 
+
+app.get('/', function(request, response) {
 var mesg = fs.readFileSync('/index.html', "utf8", function (err, data) {
   if (err) throw err;
   console.log(data);
 });
-
-app.get('/', function(request, response) {
   response.send(mesg);});
 
 var port = process.env.PORT || 5000;
